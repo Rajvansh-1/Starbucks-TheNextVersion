@@ -1,6 +1,7 @@
+> **Note:** Due to dependency issues in my previous `Starbuck-Horizon` repo, I am shifting the project to this new repository for a smoother development experience.
 
 <div align="center">
-   <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Starbucks_Coffee_Logo.svg" alt="Starbucks Logo" width="120" />
+   <img src="public/starbucks.svg" alt="Starbucks Logo" width="120" />
   
    # ☕ Starbucks-TheNextVersion
   
