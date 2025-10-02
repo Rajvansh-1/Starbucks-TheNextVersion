@@ -1,0 +1,13 @@
+.magnify_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* This is important to contain the effect */
+}
+
+.magnify_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50px; /* Match your original image style */
+}

@@ -72,7 +72,7 @@ const Footer = () => {
             </section>
 
             <div className={styles.copyright}>
-                © 2024 Starbucks Coffee Company. All rights reserved.
+                Starbucks-TheNextVersion | Designed & Developed by Rajvansh &copy; {new Date().getFullYear()}
             </div>
 
 
