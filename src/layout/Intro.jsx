@@ -1,37 +1,72 @@
-import React, { useEffect, useState } from 'react'
-import styles from '../styles/Intro.module.css'
-import FramerMotion from '../animation/FramerMotion'
+import React, { useEffect, useState } from 'react';
+import styles from '../styles/Intro.module.css';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Intro = () => {
-    const [hide, setHide] = useState(false)
-    const [shrinkImage, setShrinkImage] = useState(false)
+    const [loadingProgress, setLoadingProgress] = useState(0);
+    const [show, setShow] = useState(true);
 
     useEffect(() => {
-        setTimeout(() => {
-            setHide(true)
-        }, 4500)
-        setTimeout(() => {
-            setShrinkImage(true)
-        }, 2000)
+        const interval = setInterval(() => {
+            setLoadingProgress(prev => {
+                if (prev >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => setShow(false), 500); // Wait half a second before hiding
+                    return 100;
+                }
+                return prev + 1;
+            });
+        }, 30); // Controls the speed of the loading bar
 
-    }, [])
+        return () => clearInterval(interval);
+    }, []);
 
+    const textVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.5 } }
+    };
 
     return (
-        <div onKeyDown={(e) => e.preventDefault()} className={`${styles.intro_container} ${hide ? styles.hide : ""}`}>
-            <div className={styles.logo_div}>
-                <img className={shrinkImage ? styles.animation : ""} src="./starbucks-intro.png" loading="eager" alt="" />
-            </div>
-            <div className={styles.intro_text}>
-                <FramerMotion delay={2} type={"topToBottom"} overflowHidden={"hidden"} animateOnces={true}>
-                    <h2>STARBUCKS</h2>
-                </FramerMotion>
-                <FramerMotion delay={2.3} type={"topToBottom"} overflowHidden={"hidden"} animateOnces={true}>
-                    <p>COFFEE THAT INSPIRES</p>
-                </FramerMotion>
-            </div>
-        </div>
-    )
-}
+        <AnimatePresence>
+            {show && (
+                <motion.div
+                    className={styles.intro_container}
+                    exit={{ opacity: 0, y: "-100vh" }}
+                    transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
+                >
+                    <div className={styles.content_wrapper}>
+                        <motion.div
+                            className={styles.logo_div}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, ease: "easeOut" }}
+                        >
+                            <img src="./starbucks-intro.png" loading="eager" alt="Starbucks Logo" />
+                        </motion.div>
+                        <div className={styles.intro_text}>
+                            <motion.h2 variants={textVariants} initial="hidden" animate="visible">
+                                STARBUCKS
+                            </motion.h2>
+                            <motion.p variants={textVariants} initial="hidden" animate="visible" transition={{ delay: 0.8 }}>
+                                COFFEE THAT INSPIRES
+                            </motion.p>
+                        </div>
+                        <div className={styles.loader_wrapper}>
+                            <p className={styles.loading_percentage}>{loadingProgress}%</p>
+                            <div className={styles.loading_bar_container}>
+                                <motion.div
+                                    className={styles.loading_bar}
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${loadingProgress}%` }}
+                                    transition={{ duration: 0.1, ease: "linear" }}
+                                ></motion.div>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+};
 
-export default Intro
+export default Intro;
