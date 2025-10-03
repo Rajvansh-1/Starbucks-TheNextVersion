@@ -1,0 +1,94 @@
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: var(--primary-background);
+    min-height: calc(100vh - 200px); /* Adjust based on your header/footer height */
+}
+
+.loginForm {
+    background-color: var(--secondary-background);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.logo svg {
+    font-size: 50px;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+.logo h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+}
+
+.inputGroup {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.inputGroup label {
+    display: block;
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.inputGroup input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--secondary-background-lighter);
+    background-color: var(--primary-background);
+    border-radius: 5px;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.submitButton {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--highlight-color);
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.submitButton:hover {
+    background-color: #008659;
+}
+
+.forgotPassword {
+    margin-top: 20px;
+    font-size: 0.8rem;
+}
+
+.forgotPassword a {
+    color: var(--highlight-color);
+    text-decoration: none;
+}
+
+.forgotPassword a:hover {
+    text-decoration: underline;
+}

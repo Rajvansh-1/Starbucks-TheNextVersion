@@ -1,41 +1,33 @@
 import React, { useState } from 'react';
 import styles from './../styles/Navbar.module.css';
 import { FaLocationDot } from "react-icons/fa6";
-import { FaBars, FaTimes } from 'react-icons/fa';
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineMenuBook } from 'react-icons/md';
 import { IoGift, IoStorefrontSharp } from 'react-icons/io5';
 import { BsFillCreditCard2FrontFill } from 'react-icons/bs';
-// import StoreLocator from './StoreLocator';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isStoreLocatorOpen, setIsStoreLocatorOpen] = useState(false);
-
-
-
-    const toggleStoreLocator = () => {
-        setIsStoreLocatorOpen(!isStoreLocatorOpen);
-    };
+    const navigate = useNavigate();
 
     return (
         <header className={styles.header}>
             <nav className={styles.navbar_main_container}>
-                <img src="https://res.cloudinary.com/dvmuf6jfj/image/upload/v1720633150/Starbucks/22_xavkyq.png" alt="logo" className={styles.logo} />
+                <img src="https://res.cloudinary.com/dvmuf6jfj/image/upload/v1720633150/Starbucks/22_xavkyq.png" alt="logo" className={styles.logo} onClick={() => navigate('/')} style={{cursor: 'pointer'}} />
 
                 <div className={`${styles.navbar_content_container} ${isMenuOpen ? styles.open : ''}`}>
                     <div className={styles.branding_items}>
-                        <Link to="/">Menu</Link>
-                        <Link to="/">Rewards</Link>
-                        <Link to="/">Gift Cards</Link>
+                        <Link to="/menu">Menu</Link>
+                        <Link to="/rewards">Rewards</Link>
+                        <Link to="/gift-cards">Gift Cards</Link>
                     </div>
 
                     <div className={styles.user_items}>
-                        <Link to="/" onClick={toggleStoreLocator}><FaLocationDot /> Find a Store</Link>
-                        <button className={styles.signIn}>Sign In</button>
-                        <button>Join Now</button>
+                        <Link to="#" onClick={() => alert("Opening Store Locator...")}><FaLocationDot /> Find a Store</Link>
+                        <button className={styles.signIn} onClick={() => navigate('/login')}>Sign In</button>
+                        <button onClick={() => navigate('/join')}>Join Now</button>
                     </div>
                 </div>
 
@@ -46,14 +38,11 @@ const Navbar = () => {
             </nav>
 
             <ul className={` ${styles.mob_links} ${isMenuOpen && styles.show}`}>
-                <li><Link to="/"><MdOutlineMenuBook /> Menu</Link></li>
-                <li><Link to="/"><IoGift />  Rewards</Link></li>
-                <li><Link to="/"><BsFillCreditCard2FrontFill />                Gift Cards</Link></li>
-                <li><Link to="/"> <IoStorefrontSharp /> Find a Store</Link></li>
-                {/* <li><Link to="/">Sign In/Up</Link></li> */}
+                <li><Link to="/menu"><MdOutlineMenuBook /> Menu</Link></li>
+                <li><Link to="/rewards"><IoGift /> Rewards</Link></li>
+                <li><Link to="/gift-cards"><BsFillCreditCard2FrontFill /> Gift Cards</Link></li>
+                <li><Link to="#" onClick={() => alert("Opening Store Locator...")}> <IoStorefrontSharp /> Find a Store</Link></li>
             </ul>
-
-
         </header>
     );
 };

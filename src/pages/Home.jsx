@@ -21,7 +21,7 @@ import bestSellers from '../json/bestSellers.json'
 import Slider from '../layout/Slider';
 import MagnifyingGlass from '../components/MagnifyingGlass';
 
-const Home = () => {
+const Home = ({ addToCart }) => {
 
     const reversedArr = [...productsData]?.reverse()
     const scrollRef = useRef(null);
@@ -227,9 +227,9 @@ const Home = () => {
                 <div className={styles.best_seller_con}>
                     <div className={styles.product_con} ref={productListRef}>
                         {bestSellers.map((data, index) => {
-                            return <h3 
-                                key={data.name} 
-                                className={bestSellerSelected === index ? styles.active : ''} 
+                            return <h3
+                                key={data.name}
+                                className={bestSellerSelected === index ? styles.active : ''}
                                 onMouseEnter={() => setBestSellerSelected(index)}
                             >
                                 {data.name}
@@ -239,13 +239,13 @@ const Home = () => {
                     </div>
 
                     <div className={`${styles.image_con} allow_hover`} >
-                        <MagnifyingGlass 
-                            src={bestSellers[bestSellerSelected].image} 
-                            alt={bestSellers[bestSellerSelected].name} 
+                        <MagnifyingGlass
+                            src={bestSellers[bestSellerSelected].image}
+                            alt={bestSellers[bestSellerSelected].name}
                         />
                         <div className={styles.product_details}>
                             <span>₹{bestSellers[bestSellerSelected].price}.00</span>
-                            <button className="allow_hover">Add To Bag</button>
+                            <button className="allow_hover" onClick={() => addToCart(bestSellers[bestSellerSelected])}>Add To Bag</button>
                         </div>
                     </div>
                 </div>
@@ -266,7 +266,7 @@ const Home = () => {
                         <Slider data={productsData} type={"products"} />
                     </div>
                 </div>
-                <button className='allow_hover'>View More Products</button>
+                <button className='allow_hover' onClick={() => productsSectionRef.current.scrollIntoView({ behavior: 'smooth' })}>View More Products</button>
             </section>
 
             <section className={styles.features} ref={contentRef} data-scroll>
@@ -350,7 +350,7 @@ const Home = () => {
                     <div>
                         <FramerMotion type={"topToBottom"} overflowHidden={"hidden"} delay={0} animateOnces={false}> <h6>Art & Science Of Coffee Brewing </h6></FramerMotion>
                         <FramerMotion type={"topToBottom"} overflowHidden={"hidden"} delay={0.2} animateOnces={false}><p> Master the perfect brew with Starbucks! Learn the art and science of coffee brewing. </p></FramerMotion>
-                        <FramerMotion type={"topToBottom"} overflowHidden={"hidden"} delay={0.4} animateOnces={false}><button className='allow_hover'>Learn More</button></FramerMotion>
+                        <FramerMotion type={"topToBottom"} overflowHidden={"hidden"} delay={0.4} animateOnces={false}><button className='allow_hover' onClick={() => alert("Redirecting to learn more...")}>Learn More</button></FramerMotion>
                     </div>
                 </div>
             </section>
