@@ -1,101 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/Footer.module.css';
 import { SiStarbucks } from 'react-icons/si';
-import { FaFacebook, FaInstagram, FaSpotify, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram, FaSpotify } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Footer = () => {
-    const footerVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.8,
-                staggerChildren: 0.2,
-            },
-        },
-    };
+    const [beanClicked, setBeanClicked] = useState(false);
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    const handleBeanClick = () => {
+        setBeanClicked(true);
+        setTimeout(() => setBeanClicked(false), 3000); // Message disappears after 3 seconds
     };
-
-    const iconVariants = {
-        hover: {
-            scale: 1.2,
-            rotate: 360,
-            transition: { duration: 0.4 },
-        },
+    
+    const iconHover = {
+        y: -5,
+        scale: 1.2,
+        color: '#FFD700',
+        transition: { type: 'spring', stiffness: 300 }
     };
 
     return (
-        <motion.footer
-            className={styles.footer}
-            variants={footerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-        >
-            <div className={styles.footer_details}>
-                <motion.div className={styles.section_1} variants={itemVariants}>
-                    <div className={styles.company_logo}>
-                        <SiStarbucks />
-                        <h5>Starbucks</h5>
-                    </div>
-                    <p className={styles.description}>
-                        Inspiring and nurturing the human spirit—one person, one cup, and one neighborhood at a time.
-                    </p>
+        <footer className={styles.footer}>
+            {/* --- Animated Steam Effect --- */}
+            <div className={styles.steamContainer}>
+                {[...Array(10)].map((_, i) => (
+                    <div key={i} className={styles.steamBubble} style={{ '--i': i + 1 }} />
+                ))}
+            </div>
+            
+            <div className={styles.footerContent}>
+                <motion.div 
+                    className={styles.brandSection}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <SiStarbucks className={styles.mainLogo} />
+                    <h3>The Final Pour</h3>
+                    <p>Every cup a story, every visit a memory. Thank you for sharing a moment with us.</p>
+                </motion.div>
 
-                    <div className={styles.subscribe_div}>
-                        <input type="text" placeholder='Your Email for Updates' />
-                        <button>Subscribe</button>
+                <div className={styles.linksAndSocial}>
+                    <div className={styles.linkColumn}>
+                        <h4>Explore</h4>
+                        <Link to="/menu">Our Menu</Link>
+                        <Link to="/rewards">Rewards Program</Link>
+                        <Link to="/find-a-store">Find a Store</Link>
                     </div>
-
-                    <div className={styles.icons}>
-                        <h5>Follow Us</h5>
-                        <div className={styles.social_icons}>
-                            <motion.a href="#" variants={iconVariants} whileHover="hover"><FaFacebook /></motion.a>
-                            <motion.a href="#" variants={iconVariants} whileHover="hover"><FaInstagram /></motion.a>
-                            <motion.a href="#" variants={iconVariants} whileHover="hover"><FaSpotify /></motion.a>
-                            <motion.a href="#" variants={iconVariants} whileHover="hover"><FaTwitter /></motion.a>
+                    <div className={styles.linkColumn}>
+                        <h4>Connect</h4>
+                        <Link to="#">Our Company</Link>
+                        <Link to="#">Careers</Link>
+                        <Link to="#">Contact Us</Link>
+                    </div>
+                     <div className={styles.socialSection}>
+                        <h4>Follow the Aroma</h4>
+                        <div className={styles.socialIcons}>
+                            <motion.a href="#" whileHover={iconHover}><FaFacebookF /></motion.a>
+                            <motion.a href="#" whileHover={iconHover}><FaInstagram /></motion.a>
+                            <motion.a href="#" whileHover={iconHover}><FaSpotify /></motion.a>
+                            <motion.a href="#" whileHover={iconHover}><FaTwitter /></motion.a>
                         </div>
                     </div>
-                </motion.div>
-                <motion.div className={styles.section_2} variants={itemVariants}>
-                    <div className={styles.options}>
-                        <h5>About Us</h5>
-                        <ul>
-                            <li><Link to="/">Our Company</Link></li>
-                            <li><Link to="/">Our Coffee</Link></li>
-                            <li><Link to="/">Stories and News</Link></li>
-                            <li><Link to="/">Customer Service</Link></li>
-                        </ul>
-                    </div>
-                    <div className={styles.options}>
-                        <h5>Careers</h5>
-                        <ul>
-                            <li><Link to="/">Culture and Values</Link></li>
-                            <li><Link to="/">U.S. Careers</Link></li>
-                            <li><Link to="/">International Careers</Link></li>
-                        </ul>
-                    </div>
-                    <div className={styles.options}>
-                        <h5>Social Impact</h5>
-                        <ul>
-                            <li><Link to="/">People</Link></li>
-                            <li><Link to="/">Planet</Link></li>
-                            <li><Link to="/">Reporting</Link></li>
-                        </ul>
-                    </div>
-                </motion.div>
+                </div>
             </div>
-            <motion.div className={styles.copyright} variants={itemVariants}>
+
+            {/* --- The Coffee Bean Easter Egg --- */}
+            <div className={styles.coffeeBean} onClick={handleBeanClick}></div>
+            <AnimatePresence>
+                {beanClicked && (
+                    <motion.div 
+                        className={styles.beanMessage}
+                        initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.8 }}
+                    >
+                        You found the magic bean!
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <div className={styles.copyright}>
                 Starbucks-TheNextVersion | Designed & Developed by Rajvansh &copy; {new Date().getFullYear()}
-            </motion.div>
-        </motion.footer>
+            </div>
+        </footer>
     );
 };
 
