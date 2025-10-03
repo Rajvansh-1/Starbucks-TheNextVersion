@@ -1,0 +1,34 @@
+[
+    {
+        "id": "store1",
+        "name": "Starbucks - Celebration Mall",
+        "address": "Ground Floor, Celebration Mall, Bhuwana",
+        "city": "Udaipur, Rajasthan",
+        "distance": "2.1 km",
+        "open": true
+    },
+    {
+        "id": "store2",
+        "name": "Starbucks - Fateh Sagar Lake",
+        "address": "Shop 42, Lake View Road, Near Fateh Sagar",
+        "city": "Udaipur, Rajasthan",
+        "distance": "4.5 km",
+        "open": true
+    },
+    {
+        "id": "store3",
+        "name": "Starbucks - The Oberoi Udaivilas",
+        "address": "Lobby Level, The Oberoi Udaivilas",
+        "city": "Udaipur, Rajasthan",
+        "distance": "6.8 km",
+        "open": false
+    },
+    {
+        "id": "store4",
+        "name": "Starbucks - City Palace",
+        "address": "Old City, Near Jagdish Temple",
+        "city": "Udaipur, Rajasthan",
+        "distance": "7.2 km",
+        "open": true
+    }
+]

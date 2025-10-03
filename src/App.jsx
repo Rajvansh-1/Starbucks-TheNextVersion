@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Footer from './layout/Footer';
-import Cursor from './components/Cursor';
-import Navbar from './layout/Navbar';
-import Intro from './layout/Intro';
+import Home from './pages/Home.jsx';
+import Footer from './layout/Footer.jsx';
+import Cursor from './components/Cursor.jsx';
+import Navbar from './layout/Navbar.jsx';
+import Intro from './layout/Intro.jsx';
 
-// Import the new pages
-import LoginPage from './pages/LoginPage';
-import MenuPage from './pages/MenuPage';
-import RewardsPage from './pages/RewardsPage';
-import GiftCardsPage from './pages/GiftCardsPage';
+// Import all the pages
+import LoginPage from './pages/LoginPage.jsx';
+import MenuPage from './pages/MenuPage.jsx';
+import RewardsPage from './pages/RewardsPage.jsx';
+import GiftCardsPage from './pages/GiftCardsPage.jsx';
+import FindAStorePage from './pages/FindAStorePage.jsx';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -29,12 +30,12 @@ const App = () => {
       <div className="app_content">
         <Routes>
           <Route path="/" element={<Home addToCart={addToCart} />} />
-          {/* Make sure to pass addToCart here */}
           <Route path="/menu" element={<MenuPage addToCart={addToCart} />} />
           <Route path="/rewards" element={<RewardsPage />} />
           <Route path="/gift-cards" element={<GiftCardsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/join" element={<LoginPage />} />
+          <Route path="/find-a-store" element={<FindAStorePage />} />
         </Routes>
       </div>
       <Footer />
@@ -43,3 +44,4 @@ const App = () => {
 };
 
 export default App;
+

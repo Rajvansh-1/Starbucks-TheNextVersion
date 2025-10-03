@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './../styles/Navbar.module.css';
+import styles from '../styles/Navbar.module.css';
 import { FaLocationDot } from "react-icons/fa6";
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
@@ -25,8 +25,12 @@ const Navbar = () => {
                     </div>
 
                     <div className={styles.user_items}>
-                        <Link to="#" onClick={() => alert("Opening Store Locator...")}><FaLocationDot /> Find a Store</Link>
+                        {/* This link now correctly points to the store finder page */}
+                        <Link to="/find-a-store"><FaLocationDot /> Find a Store</Link>
+                        
+                        {/* This button now correctly navigates to the login page */}
                         <button className={styles.signIn} onClick={() => navigate('/login')}>Sign In</button>
+                        
                         <button onClick={() => navigate('/join')}>Join Now</button>
                     </div>
                 </div>
@@ -41,7 +45,7 @@ const Navbar = () => {
                 <li><Link to="/menu"><MdOutlineMenuBook /> Menu</Link></li>
                 <li><Link to="/rewards"><IoGift /> Rewards</Link></li>
                 <li><Link to="/gift-cards"><BsFillCreditCard2FrontFill /> Gift Cards</Link></li>
-                <li><Link to="#" onClick={() => alert("Opening Store Locator...")}> <IoStorefrontSharp /> Find a Store</Link></li>
+                <li><Link to="/find-a-store"> <IoStorefrontSharp /> Find a Store</Link></li>
             </ul>
         </header>
     );
