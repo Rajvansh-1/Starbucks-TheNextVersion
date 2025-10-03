@@ -16,7 +16,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    setCart((prevCart) => [...prevCart, product]);
     alert(`${product.name} has been added to your bag!`);
     console.log('Cart:', [...cart, product]);
   };
@@ -29,11 +29,12 @@ const App = () => {
       <div className="app_content">
         <Routes>
           <Route path="/" element={<Home addToCart={addToCart} />} />
-          <Route path="/menu" element={<MenuPage />} />
+          {/* Make sure to pass addToCart here */}
+          <Route path="/menu" element={<MenuPage addToCart={addToCart} />} />
           <Route path="/rewards" element={<RewardsPage />} />
           <Route path="/gift-cards" element={<GiftCardsPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/join" element={<LoginPage />} /> {/* Re-using login page for "Join Now" */}
+          <Route path="/join" element={<LoginPage />} />
         </Routes>
       </div>
       <Footer />

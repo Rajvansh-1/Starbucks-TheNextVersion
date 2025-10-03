@@ -1,0 +1,27 @@
+[
+    {
+        "id": "gc1",
+        "name": "Happy Birthday Moon Bear",
+        "image": "https://globalassets.starbucks.com/digitalassets/cards/fy25/YoureAStarCoreFY25.png"
+    },
+    {
+        "id": "gc2",
+        "name": "Merci Card",
+        "image": "https://globalassets.starbucks.com/digitalassets/cards/fy25/BirthdayFY25.png"
+    },
+    {
+        "id": "gc3",
+        "name": "Congratulations Card",
+        "image": "https://globalassets.starbucks.com/digitalassets/cards/fy23/GreatWorkDeservesCoffeeFY23.jpg"
+    },
+    {
+        "id": "gc4",
+        "name": "Starbucks Rewards Card",
+        "image": "https://globalassets.starbucks.com/digitalassets/cards/fy25/FriendsBuyCoffeeFY25.png"
+    },
+    {
+        "id": "gc5",
+        "name": "Thank You Card",
+        "image": "https://globalassets.starbucks.com/digitalassets/cards/fy25/CelebrateCoffeeFY25.png"
+    }
+]

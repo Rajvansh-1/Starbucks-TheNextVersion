@@ -1,11 +1,14 @@
 .giftCardContainer {
     width: 100%;
+    min-height: 80vh;
     padding: 60px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: var(--secondary-background);
 }
 
+/* Card Selector View */
 .header {
     text-align: center;
     margin-bottom: 60px;
@@ -18,43 +21,163 @@
     color: var(--highlight-color);
 }
 
-.header p {
-    font-size: 1rem;
-    color: var(--secondary-color);
-}
-
 .cardGallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
     width: 100%;
     max-width: 1200px;
-    margin-bottom: 50px;
 }
 
-.card {
+.cardWrapper {
     cursor: pointer;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
 }
 
-.card img {
+.cardWrapper img {
     width: 100%;
     display: block;
 }
 
-.viewAllButton {
-    background: var(--highlight-color);
+/* Customizer View */
+.customizer {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.cardPreview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selectedCard {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    position: relative; /* For live message positioning */
+}
+
+.selectedCard img {
+    width: 100%;
+    display: block;
+}
+
+.liveMessage {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.7);
+}
+
+.backButton {
+    background: transparent;
+    color: var(--secondary-color);
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.backButton:hover {
+    color: var(--highlight-color);
+    text-decoration: underline;
+}
+
+.formSection {
+    flex: 1;
     color: var(--primary-color);
-    padding: 15px 40px;
+}
+
+.formSection h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.amountSelector p {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.amountSelector div {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.amountSelector button {
+    background: var(--primary-background);
+    border: 2px solid var(--secondary-background-lighter);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 50px;
     font-size: 1rem;
     font-weight: 600;
-    border-radius: 50px;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.viewAllButton:hover {
+.amountSelector button:hover, .amountSelector button.active {
+    background: var(--highlight-color);
+    border-color: var(--highlight-color);
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.messageBox label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.messageBox textarea {
+    width: 100%;
+    height: 120px;
+    background: var(--primary-background);
+    border: 2px solid var(--secondary-background-lighter);
+    border-radius: 10px;
+    padding: 15px;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    resize: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.messageBox textarea:focus {
+    outline: none;
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 15px rgba(0, 167, 111, 0.5);
+}
+
+.purchaseButton {
+    width: 100%;
+    background: var(--highlight-color);
+    color: var(--primary-color);
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0 4px 15px rgba(0, 167, 111, 0.3);
+}
+
+@media (max-width: 800px) {
+    .customizer {
+        flex-direction: column;
+    }
 }
