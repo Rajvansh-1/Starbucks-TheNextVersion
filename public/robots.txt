@@ -1,0 +1,6 @@
+# Allow all search engines to crawl the entire site
+User-agent: *
+Disallow:
+
+# Provide the location of the sitemap
+Sitemap: https://your-live-url.com/sitemap.xml
