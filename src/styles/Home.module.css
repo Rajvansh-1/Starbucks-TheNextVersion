@@ -229,14 +229,15 @@
 }
 
 .product_details {
-  width: 80%;
+  width: 90%;
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center; /* This is the key property for vertical alignment */
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
-  bottom: 0%;
+  transform: translateX(-50%);
+  bottom: 30px;
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 2px;
   overflow: hidden;
@@ -252,12 +253,19 @@
   appearance: none;
   border: none;
   background: var(--highlight-color);
-  padding: 25px 15px;
-  font-size: 2rem;
+  padding: 12px 22px;
+  font-size: 1.2rem;
   font-family: "Bebas Neue", sans-serif;
   color: var(--primary-color);
-  margin-top: -10px;
-  border-radius: 10px;
+  margin-top: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product_details button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .products_section {
