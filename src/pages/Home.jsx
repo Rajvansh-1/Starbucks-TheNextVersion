@@ -4,7 +4,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/locomotive-scroll.css";
 import React, { useEffect, useRef, useState } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { IoIosArrowRoundDown, IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowRoundDown } from 'react-icons/io';
 import { IoFastFoodSharp } from 'react-icons/io5';
 import { SiBuymeacoffee, SiCodefresh } from 'react-icons/si';
 import styles from '../styles/Home.module.css';
@@ -14,7 +14,6 @@ import communityPosts from '../json/community.json'
 import faqData from '../json/faqData.json'
 import ProductBox from '../components/ProductBox';
 import FAQBox from '../components/FAQBox';
-import { BsFillPatchQuestionFill, BsQuestionCircleFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import FramerMotion from '../animation/FramerMotion';
 import productsData from '../json/products.json'
@@ -35,6 +34,8 @@ const Home = () => {
     const shadowRef = useRef(null)
     const reviewsRef = useRef(null)
     const categoriesRef = useRef(null)
+    const productListRef = useRef(null); // Ref for the list container
+    const indicatorRef = useRef(null);   // Ref for the new indicator
     const [bestSellerSelected, setBestSellerSelected] = useState(0)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
@@ -50,6 +51,23 @@ const Home = () => {
             if (scroll) scroll.destroy();
         };
     }, []);
+
+    // Effect to animate the indicator
+    useEffect(() => {
+        const productList = productListRef.current;
+        const indicator = indicatorRef.current;
+        if (productList && indicator) {
+            const activeItem = productList.children[bestSellerSelected];
+            if (activeItem) {
+                gsap.to(indicator, {
+                    top: activeItem.offsetTop,
+                    height: activeItem.offsetHeight,
+                    duration: 0.4,
+                    ease: 'power3.inOut'
+                });
+            }
+        }
+    }, [bestSellerSelected]);
 
 
     useEffect(() => {
@@ -207,11 +225,17 @@ const Home = () => {
 
                 <h2 data-scroll style={{ fontWeight: "600" }}>BEST SELLERS</h2>
                 <div className={styles.best_seller_con}>
-                    <div className={styles.product_con}>
+                    <div className={styles.product_con} ref={productListRef}>
                         {bestSellers.map((data, index) => {
-                            return <FramerMotion key={data.name} type={"leftToRight"} overflowHidden={"hidden"} animateOnces={false}><h3 className={bestSellerSelected === index ? styles.active : ''} onClick={() => setBestSellerSelected(index)} >{data.name}</h3></FramerMotion>
+                            return <h3 
+                                key={data.name} 
+                                className={bestSellerSelected === index ? styles.active : ''} 
+                                onMouseEnter={() => setBestSellerSelected(index)}
+                            >
+                                {data.name}
+                            </h3>
                         })}
-
+                        <div className={styles.indicator} ref={indicatorRef}></div>
                     </div>
 
                     <div className={`${styles.image_con} allow_hover`} >
