@@ -59,5 +59,5 @@ MIT — open for you to build, share, and enjoy.
 ---
 
 <div align="center">
-   <b>Design & Develped by https://github.com/Rajvansh-1</b>
+    <b>Design & Developed by <a href="https://github.com/Rajvansh-1">Rajvansh-1</a></b>
 </div>
