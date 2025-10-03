@@ -20,6 +20,7 @@ import FramerMotion from '../animation/FramerMotion';
 import productsData from '../json/products.json'
 import bestSellers from '../json/bestSellers.json'
 import Slider from '../layout/Slider';
+import MagnifyingGlass from '../components/MagnifyingGlass';
 
 const Home = () => {
 
@@ -208,20 +209,21 @@ const Home = () => {
                 <div className={styles.best_seller_con}>
                     <div className={styles.product_con}>
                         {bestSellers.map((data, index) => {
-                            return <FramerMotion key={data.name} type={"leftToRight"} overflowHidden={"hidden"} animateOnces={false}><h3 className={bestSellerSelected === index && styles.active} onClick={() => setBestSellerSelected(index)} >{data.name}</h3></FramerMotion>
+                            return <FramerMotion key={data.name} type={"leftToRight"} overflowHidden={"hidden"} animateOnces={false}><h3 className={bestSellerSelected === index ? styles.active : ''} onClick={() => setBestSellerSelected(index)} >{data.name}</h3></FramerMotion>
                         })}
 
                     </div>
 
-                    <Link style={{ textDecoration: "none", display: "flex", alignItems: "center", flexDirection: "column" }} to={"/"} className={`${styles.image_con} allow_hover`} >
-                        <FramerMotion className={"height_li"} width={"100%"} type={"rightToLeft"} overflowHidden={"hidden"} animateOnces={false}>
-                            <img loading="eager" id='best_sellers_img_con' src={bestSellers[bestSellerSelected].image} alt={bestSellers[bestSellerSelected].name} />
-                        </FramerMotion>
+                    <div className={`${styles.image_con} allow_hover`} >
+                        <MagnifyingGlass 
+                            src={bestSellers[bestSellerSelected].image} 
+                            alt={bestSellers[bestSellerSelected].name} 
+                        />
                         <div className={styles.product_details}>
                             <span>₹{bestSellers[bestSellerSelected].price}.00</span>
                             <button className="allow_hover">Add To Bag</button>
                         </div>
-                    </Link>
+                    </div>
                 </div>
             </section>
 
