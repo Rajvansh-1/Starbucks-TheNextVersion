@@ -1,0 +1,60 @@
+.giftCardContainer {
+    width: 100%;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--primary-color);
+}
+
+.header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3.5rem;
+    color: var(--highlight-color);
+}
+
+.header p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+.cardGallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 50px;
+}
+
+.card {
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+.viewAllButton {
+    background: var(--highlight-color);
+    color: var(--primary-color);
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.viewAllButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}

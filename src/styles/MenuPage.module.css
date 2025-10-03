@@ -1,0 +1,41 @@
+.menuContainer {
+    width: 100%;
+    padding: 40px 20px;
+    color: var(--primary-color);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3.5rem;
+    color: var(--highlight-color);
+    letter-spacing: 2px;
+}
+
+.header p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+.categorySection {
+    margin-bottom: 50px;
+}
+
+.categorySection h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--highlight-color);
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+.productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
