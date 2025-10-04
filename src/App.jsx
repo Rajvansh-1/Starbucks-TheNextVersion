@@ -12,10 +12,10 @@ import MenuPage from './pages/MenuPage.jsx';
 import RewardsPage from './pages/RewardsPage.jsx';
 import GiftCardsPage from './pages/GiftCardsPage.jsx';
 import FindAStorePage from './pages/FindAStorePage.jsx';
-import CartPage from './pages/CartPage.jsx';
-import CheckoutPage from './pages/CheckoutPage.jsx';
-import OrderTrackingPage from './pages/OrderTrackingPage.jsx';
-import ProfilePage from './pages/ProfilePage.jsx';
+// import CartPage from './pages/CartPage.jsx';
+// import CheckoutPage from './pages/CheckoutPage.jsx';
+// import OrderTrackingPage from './pages/OrderTrackingPage.jsx';
+// import ProfilePage from './pages/ProfilePage.jsx';
 
 // Import services and store
 import { useAppStore } from './store/appStore';
@@ -124,10 +124,10 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/join" element={<LoginPage />} />
           <Route path="/find-a-store" element={<FindAStorePage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/order-tracking/:orderId" element={<OrderTrackingPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          {/* <Route path="/cart" element={<CartPage />} /> */}
+          {/* <Route path="/checkout" element={<CheckoutPage />} /> */}
+          {/* <Route path="/order-tracking/:orderId" element={<OrderTrackingPage />} /> */}
+          {/* <Route path="/profile" element={<ProfilePage />} /> */}
         </Routes>
       </div>
       <Footer />
@@ -136,4 +136,3 @@ const App = () => {
 };
 
 export default App;
-
