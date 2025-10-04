@@ -7,7 +7,7 @@
     ],
     "outDir": "./dist",
     "rootDir": "./src",
-    "strict": false, // Changed this from true to false
+    "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -16,7 +16,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "removeComments": true,
-    "noPropertyAccessFromIndexSignature": false, // Changed this from true to false
+    "noPropertyAccessFromIndexSignature": false,
     "baseUrl": "./src",
     "paths": {
       "@/*": [
