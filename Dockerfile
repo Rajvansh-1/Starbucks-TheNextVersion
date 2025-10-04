@@ -18,3 +18,4 @@ RUN npm run build
 
 # The 'start' script in your package.json will serve the app
 CMD ["npm", "start"]
+
