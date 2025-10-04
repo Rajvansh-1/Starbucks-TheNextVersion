@@ -10,8 +10,7 @@ import { connectDatabase } from '@/config/database';
 import { connectRedis } from '@/config/redis';
 import { logger } from '@/config/logger';
 import { errorHandler } from '@/middleware/errorHandler';
-import { notFound } from '@/middleware/notFound';
-
+import { notFound } from '@/middleware/errorHandler';
 // Import routes
 import authRoutes from '@/routes/authRoutes';
 import userRoutes from '@/routes/userRoutes';
