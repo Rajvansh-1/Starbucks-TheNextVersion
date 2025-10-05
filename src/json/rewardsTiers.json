@@ -3,30 +3,30 @@
         "stars": 25,
         "title": "Customize your drink",
         "description": "Make your drink just right with an extra espresso shot, dairy substitute or a dash of your favorite syrup.",
-        "image": "public/25.png"
+        "image": "/25.png"
     },
     {
         "stars": 100,
         "title": "Brewed hot or iced coffee or tea, bakery item, or packaged snack",
         "description": "Treat yourself to a hot brewed coffee or tea, a pastry, or a packaged snack.",
-        "image": "public/100.png"
+        "image": "/100.png"
     },
     {
         "stars": 200,
         "title": "Handcrafted drink, hot breakfast, or parfait",
         "description": "Turn your Stars into a handcrafted beverage, a hot breakfast sandwich, or a delicious parfait.",
-        "image": "public/200.png"
+        "image": "/200.png"
     },
     {
         "stars": 300,
         "title": "Packaged coffee or a single merchandise item",
         "description": "Take home a signature cup, a bag of coffee, or your choice of select coffee accessories.",
-        "image": "public/300.png"
+        "image": "/300.png"
     },
     {
         "stars": 400,
         "title": "Select merchandise",
         "description": "Redeem your stars for select Starbucks merchandise like a signature tumbler or coffee press.",
-        "image": "public/400.png"
+        "image": "/400.png"
     }
 ]

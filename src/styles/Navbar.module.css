@@ -174,3 +174,91 @@
     font-size: 0.9rem;
     white-space: nowrap;
 }
+/* --- Updated Find a Store Button --- */
+.findStoreButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--secondary-background-lighter);
+    color: var(--primary-color);
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+.findStoreButton:hover {
+    background: var(--primary-background);
+    border-color: var(--highlight-color);
+    color: var(--highlight-color);
+}
+
+
+/* --- User Profile Icon & Dropdown --- */
+.userProfile {
+    position: relative;
+}
+
+.userIcon {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.userIcon:hover {
+    color: var(--highlight-color);
+}
+
+.userMenu {
+    position: absolute;
+    top: 140%;
+    right: 0;
+    width: 220px;
+    background: var(--secondary-background);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 10px;
+    border: 1px solid var(--secondary-background-lighter);
+    z-index: 1000;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid var(--secondary-background-lighter);
+    margin-bottom: 5px;
+}
+.menuUserIcon {
+    font-size: 1.5rem;
+    color: var(--highlight-color);
+}
+.userInfo span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+
+.userMenuItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.userMenuItem:hover {
+    background-color: var(--secondary-background-lighter);
+    color: var(--primary-color);
+}
+
+.userMenuItem svg {
+    font-size: 1.1rem;
+}

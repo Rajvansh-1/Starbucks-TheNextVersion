@@ -1,94 +1,149 @@
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 25px rgba(0, 167, 111, 0.4), 0 0 50px rgba(0, 167, 111, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(0, 167, 111, 0.8), 0 0 75px rgba(0, 167, 111, 0.5);
+    }
+}
+
 .loginContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
-    background-color: var(--primary-background);
-    min-height: calc(100vh - 200px); /* Adjust based on your header/footer height */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.backgroundVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%; /* Make the video full-width */
+    height: 100%; /* Make the video full-height */
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+    filter: none; /* No blur or fade */
+    object-fit: cover; /* Ensures it covers the full screen without distortion */
+    object-position: center; /* Keeps the video centered */
+    max-width: 100%; /* Prevents stretching beyond the screen width */
+    max-height: 100%; /* Prevents stretching beyond the screen height */
+}
+
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 24, 20, 0.85); /* Dark green overlay */
+    backdrop-filter: blur(3px);
+    z-index: 2;
 }
 
 .loginForm {
-    background-color: var(--secondary-background);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     text-align: center;
+    z-index: 3;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
 }
 
 .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-bottom: 30px;
     color: var(--primary-color);
 }
 
 .logo svg {
-    font-size: 50px;
+    font-size: 60px;
     color: var(--highlight-color);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 15px var(--highlight-color));
 }
 
 .logo h2 {
     font-family: "Bebas Neue", sans-serif;
-    font-size: 2rem;
-    letter-spacing: 1.5px;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
 }
+.logo p {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
 
 .inputGroup {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.inputGroup label {
-    display: block;
-    color: var(--secondary-color);
-    font-size: 0.8rem;
-    margin-bottom: 8px;
-    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin-bottom: 25px;
 }
 
 .inputGroup input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid var(--secondary-background-lighter);
-    background-color: var(--primary-background);
-    border-radius: 5px;
+    padding: 15px;
+    border: 2px solid transparent;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
     color: var(--primary-color);
-    font-size: 0.9rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
 }
+
+.inputGroup input::placeholder {
+    color: var(--secondary-color);
+}
+
+.inputGroup input:focus {
+    outline: none;
+    border-color: var(--highlight-color);
+    background-color: rgba(0, 20, 10, 0.5);
+    box-shadow: 0 0 15px rgba(0, 167, 111, 0.5);
+}
+
 
 .submitButton {
     width: 100%;
-    padding: 15px;
+    padding: 18px;
     border: none;
-    border-radius: 50px;
+    border-radius: 10px;
     background-color: var(--highlight-color);
-    color: var(--primary-color);
-    font-size: 1rem;
+    color: white;
+    font-size: 1.1rem;
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     margin-top: 10px;
+    animation: pulse 1.5s infinite alternate ease-in-out;
 }
 
 .submitButton:hover {
-    background-color: #008659;
+    transform: translateY(-3px);
+    animation-play-state: paused;
+    box-shadow: 0 10px 30px rgba(0, 167, 111, 0.4);
 }
 
-.forgotPassword {
-    margin-top: 20px;
+.extraLinks {
+    margin-top: 25px;
     font-size: 0.8rem;
+    color: var(--secondary-color);
 }
 
-.forgotPassword a {
+.extraLinks a {
     color: var(--highlight-color);
     text-decoration: none;
+    transition: text-decoration 0.3s;
 }
 
-.forgotPassword a:hover {
+.extraLinks a:hover {
     text-decoration: underline;
 }
