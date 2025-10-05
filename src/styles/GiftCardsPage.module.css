@@ -62,8 +62,9 @@
     max-width: 400px;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    position: relative; /* For live message positioning */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    /* For live message positioning */
 }
 
 .selectedCard img {
@@ -80,7 +81,7 @@
     font-size: 1rem;
     font-family: 'Georgia', serif;
     font-style: italic;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.7);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 .backButton {
@@ -91,6 +92,7 @@
     cursor: pointer;
     font-size: 0.8rem;
 }
+
 .backButton:hover {
     color: var(--highlight-color);
     text-decoration: underline;
@@ -131,7 +133,8 @@
     transition: all 0.3s ease;
 }
 
-.amountSelector button:hover, .amountSelector button.active {
+.amountSelector button:hover,
+.amountSelector button.active {
     background: var(--highlight-color);
     border-color: var(--highlight-color);
     transform: scale(1.05);
