@@ -1,24 +1,30 @@
 .pageContainer {
     width: 100%;
     display: flex;
-    min-height: 80vh;
+    height: calc(100vh - 80px); /* Full viewport height minus navbar */
     background-color: var(--primary-background);
 }
 
-.searchContainer {
-    width: 40%;
-    padding: 60px 40px;
+.sidePanel {
+    width: 35%;
+    min-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-color: var(--secondary-background);
+    box-shadow: 5px 0px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.searchBox {
+    padding: 40px 30px;
+    border-bottom: 1px solid var(--secondary-background-lighter);
 }
 
 .searchBox h1 {
     font-family: "Bebas Neue", sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .inputWrapper {
@@ -63,6 +69,8 @@
     border-radius: 50px;
     font-weight: 600;
     transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
 }
 
 .locationButton:hover {
@@ -71,37 +79,31 @@
 }
 
 .storeListContainer {
-    width: 60%;
-    padding: 40px;
+    flex-grow: 1;
     overflow-y: auto;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g fill="%231e3932" fill-opacity="0.2"><path d="M0 50 L50 0 L100 50 L50 100 Z"/></g></svg>');
+    padding: 10px;
 }
 
 .storeList {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .storeCard {
-    background-color: var(--secondary-background);
-    padding: 25px;
-    border-radius: 15px;
+    background-color: var(--primary-background);
+    padding: 20px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .storeCard:hover {
-    transform: translateX(10px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
-.markerIcon {
-    font-size: 2rem;
-    color: var(--highlight-color);
+    transform: translateX(5px);
+    background-color: var(--secondary-background-lighter);
 }
 
 .storeInfo {
@@ -109,8 +111,9 @@
 }
 
 .storeInfo h3 {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 1.5rem;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--primary-color);
 }
 
@@ -124,23 +127,26 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 5px;
+    flex-shrink: 0;
 }
 
 .distance {
     font-weight: 600;
     font-size: 0.9rem;
+    color: var(--highlight-color);
 }
 
 .open, .closed {
-    font-size: 0.8rem;
-    padding: 5px 10px;
+    font-size: 0.7rem;
+    padding: 4px 10px;
     border-radius: 20px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .open {
-    background-color: var(--highlight-color);
-    color: var(--primary-color);
+    background-color: rgba(0, 167, 111, 0.2);
+    color: var(--highlight-color);
 }
 
 .closed {
@@ -148,11 +154,24 @@
     color: #ccc;
 }
 
+.mapContainer {
+    width: 65%;
+    height: 100%;
+}
+
+
 @media (max-width: 900px) {
     .pageContainer {
         flex-direction: column;
+        height: auto;
     }
-    .searchContainer, .storeListContainer {
+    .sidePanel, .mapContainer {
         width: 100%;
+    }
+    .mapContainer {
+        height: 50vh;
+    }
+    .sidePanel {
+        min-width: unset;
     }
 }

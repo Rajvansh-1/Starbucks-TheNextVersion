@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../styles/LoginForm.module.css';
 import { SiStarbucks } from 'react-icons/si';
 
-const LoginForm = () => {
+const LoginForm = ({ handleLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -12,9 +12,7 @@ const LoginForm = () => {
             alert('Please enter both email and password.');
             return;
         }
-        console.log('Logging in with:', { email, password });
-        alert(`Welcome back! (Simulated Login for ${email})`);
-        // Here you would typically handle authentication logic
+        handleLogin(email, password);
     };
 
     return (
@@ -31,7 +29,7 @@ const LoginForm = () => {
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
+                        placeholder="user@example.com"
                         required
                     />
                 </div>
@@ -42,7 +40,7 @@ const LoginForm = () => {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter your password"
+                        placeholder="password123"
                         required
                     />
                 </div>

@@ -9,7 +9,7 @@ import { IoGift, IoStorefrontSharp } from 'react-icons/io5';
 import { BsFillCreditCard2FrontFill } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 
-const Navbar = () => {
+const Navbar = ({ currentUser, handleLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -49,20 +49,35 @@ const Navbar = () => {
                             <Link to="/find-a-store"><FaLocationDot /> Find a Store</Link>
                         </motion.div>
                         
-                        <motion.button 
-                            className={styles.signIn} 
-                            onClick={() => navigate('/login')}
-                            whileHover={buttonHover}
-                        >
-                            Sign In
-                        </motion.button>
-                        
-                        <motion.button 
-                            onClick={() => navigate('/join')}
-                            whileHover={buttonHover}
-                        >
-                            Join Now
-                        </motion.button>
+                        {currentUser ? (
+                            <>
+                                <span className={styles.welcomeMessage}>Welcome, {currentUser.name}!</span>
+                                <motion.button 
+                                    className={styles.signIn} 
+                                    onClick={handleLogout}
+                                    whileHover={buttonHover}
+                                >
+                                    Log Out
+                                </motion.button>
+                            </>
+                        ) : (
+                            <>
+                                <motion.button 
+                                    className={styles.signIn} 
+                                    onClick={() => navigate('/login')}
+                                    whileHover={buttonHover}
+                                >
+                                    Sign In
+                                </motion.button>
+                                
+                                <motion.button 
+                                    onClick={() => navigate('/join')}
+                                    whileHover={buttonHover}
+                                >
+                                    Join Now
+                                </motion.button>
+                            </>
+                        )}
                     </motion.div>
                 </div>
 
