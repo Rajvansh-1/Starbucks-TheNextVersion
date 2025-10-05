@@ -1,36 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../styles/Footer.module.css';
 import { SiStarbucks } from 'react-icons/si';
 import { FaFacebookF, FaTwitter, FaInstagram, FaSpotify } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
-    const [beanClicked, setBeanClicked] = useState(false);
 
-    const handleBeanClick = () => {
-        setBeanClicked(true);
-        setTimeout(() => setBeanClicked(false), 3000); // Message disappears after 3 seconds
-    };
-    
     const iconHover = {
         y: -5,
         scale: 1.2,
-        color: '#FFD700',
+        color: '#cba258', // Gold color for hover
         transition: { type: 'spring', stiffness: 300 }
     };
 
     return (
         <footer className={styles.footer}>
-            {/* --- Animated Steam Effect --- */}
-            <div className={styles.steamContainer}>
-                {[...Array(10)].map((_, i) => (
-                    <div key={i} className={styles.steamBubble} style={{ '--i': i + 1 }} />
+            <div className={styles.glowingOrbs}>
+                {[...Array(30)].map((_, i) => (
+                    <div key={i} className={styles.orb} />
                 ))}
             </div>
             
             <div className={styles.footerContent}>
-                <motion.div 
+                <motion.div
                     className={styles.brandSection}
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -66,21 +59,6 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-
-            {/* --- The Coffee Bean Easter Egg --- */}
-            <div className={styles.coffeeBean} onClick={handleBeanClick}></div>
-            <AnimatePresence>
-                {beanClicked && (
-                    <motion.div 
-                        className={styles.beanMessage}
-                        initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 20, scale: 0.8 }}
-                    >
-                        You found the magic bean!
-                    </motion.div>
-                )}
-            </AnimatePresence>
 
             <div className={styles.copyright}>
                 Starbucks-TheNextVersion | Designed & Developed by Rajvansh &copy; {new Date().getFullYear()}
