@@ -1,19 +1,36 @@
 .rewardsContainer {
     width: 100%;
     color: var(--primary-color);
-    background: var(--primary-background); /* Dark base for contrast */
+    background: var(--primary-background);
 }
 
-/* --- Hero Header --- */
+/* --- NEW: Standalone Title Section --- */
+.pageTitleSection {
+    padding: 80px 40px 40px;
+    text-align: center;
+    background-color: var(--secondary-background);
+}
+
+.pageTitleSection h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 4rem;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+.pageTitleSection p {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+
+/* --- Hero Header (Video Only) --- */
 .heroHeader {
     position: relative;
-    height: 60vh;
+    height: 60vh; /* You can adjust the video height here */
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     overflow: hidden;
+    background-color: #000; /* Fallback for video */
 }
 
 .backgroundVideo {
@@ -27,94 +44,76 @@
     z-index: 1;
 }
 
-.heroOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 2;
-}
-
-.heroContent {
-    position: relative;
-    z-index: 3;
-    padding: 20px;
-    max-width: 700px;
-}
-
-.heroContent h1 {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 5rem;
-    color: white;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
-}
-
-.heroContent p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-/* --- How It Works Section --- */
-.howItWorks {
-    padding: 80px 40px;
+/* --- Journey Section --- */
+.journeySection {
+    padding: 100px 40px;
     text-align: center;
-    background: var(--secondary-background);
+    background: var(--primary-background);
 }
 
-.howItWorks h2 {
+.journeySection h2 {
     font-family: "Bebas Neue", sans-serif;
     font-size: 3rem;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
-.stepsGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+.journeySteps {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
 }
 
-.stepCard {
-    background: var(--primary-background);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.step {
+    flex: 1;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.stepCard:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-
-.stepIcon {
-    font-size: 3rem;
+.stepNumber {
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--highlight-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
     color: var(--highlight-color);
     margin-bottom: 20px;
+    background-color: var(--secondary-background);
 }
 
-.stepCard h3 {
+.step h3 {
     font-family: "Bebas Neue", sans-serif;
     font-size: 1.8rem;
     margin-bottom: 15px;
 }
 
-.stepCard p {
+.step p {
     font-size: 0.9rem;
     line-height: 1.6;
     color: var(--secondary-color);
 }
 
+.connector {
+    flex-grow: 1;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--highlight-color), var(--highlight-color) 6px, transparent 6px, transparent 12px);
+    margin-top: 30px;
+}
+
 /* --- Tiers Section --- */
 .tiersSection {
-    padding: 80px 40px;
+    padding: 100px 40px;
     text-align: center;
+    background: var(--secondary-background);
 }
 
 .tiersSection h2 {
@@ -129,76 +128,154 @@
     font-size: 1.1rem;
 }
 
-.tiersContainer {
+.tierSelector {
     display: flex;
-    gap: 25px;
-    padding: 20px;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    overflow-x: auto;
-    /* Hide scrollbar but allow scrolling */
-    scrollbar-width: none; /* Firefox */
-}
-.tiersContainer::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
 }
 
-.tierCard {
-    flex: 0 0 320px; /* Prevent shrinking, set base width */
-    background: linear-gradient(145deg, var(--secondary-background), #2a4c43);
-    border-radius: 20px;
-    padding: 30px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
-
-.tierImage {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.tierImage img {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
-}
-
-.tierContent h3 {
-    font-size: 2.5rem;
-    color: #cba258;
+.tierButton {
+    background: var(--primary-background);
+    color: var(--primary-color);
+    border: 2px solid var(--secondary-background-lighter);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: "Bebas Neue", sans-serif;
+    transition: all 0.3s ease;
+}
+.tierButton svg {
+    color: #c9a35e; /* Gold color */
 }
 
-.tierContent h3 span {
-    font-size: 1.8rem;
+.tierButton.active {
+    background: #c9a35e;
+    color: #162a25;
+    border-color: #c9a35e;
+}
+.tierButton.active svg {
+    color: #162a25;
 }
 
-.tierContent h4 {
-    font-size: 1.1rem;
+
+.tierDisplay {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tierCard {
+    background: linear-gradient(145deg, var(--primary-background), #223a34);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    text-align: left;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.tierImage {
+    flex-shrink: 0;
+}
+
+.tierImage img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+.tierContent h3 {
+    font-size: 1.5rem;
     font-weight: 600;
-    margin: 10px 0;
-    min-height: 50px;
+    margin-bottom: 15px;
 }
 
 .tierContent p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--secondary-color);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
+/* --- Extras Section --- */
+.extrasSection {
+    padding: 100px 40px;
+    text-align: center;
+    background: var(--primary-background);
+}
+
+.extrasSection h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+.extrasSection p {
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+.extrasGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.extraCard {
+    background: var(--secondary-background);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.extraIcon {
+    font-size: 3rem;
+    color: var(--highlight-color);
+    margin-bottom: 25px;
+}
+
+.extraCard h4 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.extraCard p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+}
+
+
 @media (max-width: 900px) {
-    .stepsGrid {
+    .journeySteps {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    .connector {
+        display: none;
+    }
+    .tierCard {
+        flex-direction: column;
+        text-align: center;
+    }
+    .extrasGrid {
         grid-template-columns: 1fr;
     }
-    .heroContent h1 {
-        font-size: 4rem;
+}
+@media (max-width: 600px) {
+    .pageTitleSection h1 {
+        font-size: 3rem;
+    }
+    .journeySection, .tiersSection, .extrasSection, .pageTitleSection {
+        padding: 60px 20px;
     }
 }
