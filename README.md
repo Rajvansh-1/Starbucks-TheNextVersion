@@ -46,15 +46,11 @@ public/          # Static assets
 
 ---
 
-## 🎨 Make It Yours
 
-This is your creative playground. Tweak, remix, and expand however you wish. Every pixel, every line of code is yours to shape.
-
----
 
 ## � License
 
-MIT — open for you to build, share, and enjoy.
+MIT
 
 ---
 
