@@ -10,6 +10,7 @@
     "preview": "vite preview --host"
   },
   "dependencies": {
+    "appwrite": "^21.2.1",
     "framer-motion": "^11.3.6",
     "gsap": "^3.12.5",
     "leaflet": "^1.9.4",

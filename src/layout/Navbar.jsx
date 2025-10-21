@@ -1,8 +1,9 @@
+// src/layout/Navbar.jsx
 import React, { useState } from 'react';
 import styles from '../styles/Navbar.module.css';
 import { FaUserCircle, FaShoppingBag, FaClipboardList } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";// Corrected the import line below
-import { AiOutlineClose, AiOutlineSearch, AiOutlineLogout } from 'react-icons/ai'; 
+import { FaLocationDot } from "react-icons/fa6";
+import { AiOutlineClose, AiOutlineSearch, AiOutlineLogout } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineMenuBook } from 'react-icons/md';
@@ -36,11 +37,11 @@ const Navbar = ({ currentUser, handleLogout }) => {
     return (
         <header className={styles.header}>
             <nav className={styles.navbar_main_container}>
-                <motion.img 
-                    src="https://res.cloudinary.com/dvmuf6jfj/image/upload/v1720633150/Starbucks/22_xavkyq.png" 
-                    alt="logo" 
-                    className={styles.logo} 
-                    onClick={() => navigate('/')} 
+                <motion.img
+                    src="https://res.cloudinary.com/dvmuf6jfj/image/upload/v1720633150/Starbucks/22_xavkyq.png"
+                    alt="logo"
+                    className={styles.logo}
+                    onClick={() => navigate('/')}
                     style={{cursor: 'pointer'}}
                     whileHover={{ rotate: 360, transition: { duration: 1 } }}
                 />
@@ -53,7 +54,7 @@ const Navbar = ({ currentUser, handleLogout }) => {
                     </motion.div>
 
                     <motion.div className={styles.user_items}>
-                        <motion.button 
+                        <motion.button
                             className={styles.findStoreButton}
                             onClick={() => navigate('/find-a-store')}
                             whileHover={{ scale: 1.05 }}
@@ -61,18 +62,18 @@ const Navbar = ({ currentUser, handleLogout }) => {
                         >
                             <FaLocationDot /> Find a Store
                         </motion.button>
-                        
+
                         {currentUser ? (
                             <div className={styles.userProfile}>
                                 <motion.div whileTap={{ scale: 0.9 }}>
-                                    <FaUserCircle 
-                                        className={styles.userIcon} 
-                                        onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} 
+                                    <FaUserCircle
+                                        className={styles.userIcon}
+                                        onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                                     />
                                 </motion.div>
                                 <AnimatePresence>
                                 {isUserMenuOpen && (
-                                    <motion.div 
+                                    <motion.div
                                         className={styles.userMenu}
                                         variants={userMenuVariants}
                                         initial="hidden"
@@ -81,8 +82,10 @@ const Navbar = ({ currentUser, handleLogout }) => {
                                     >
                                         <div className={styles.userInfo}>
                                             <FaUserCircle className={styles.menuUserIcon} />
+                                            {/* Display user name from Appwrite */}
                                             <span>{currentUser.name}</span>
                                         </div>
+                                        {/* You can add more user-specific links here if needed */}
                                         <Link to="/bag" className={styles.userMenuItem}><FaShoppingBag /> My Bag</Link>
                                         <Link to="/orders" className={styles.userMenuItem}><FaClipboardList /> My Orders</Link>
                                         <div className={styles.userMenuItem} onClick={handleLogout}>
@@ -94,16 +97,17 @@ const Navbar = ({ currentUser, handleLogout }) => {
                             </div>
                         ) : (
                             <>
-                                <motion.button 
-                                    className={styles.signIn} 
+                                <motion.button
+                                    className={styles.signIn}
                                     onClick={() => navigate('/login')}
                                     whileHover={buttonHover}
                                 >
                                     Sign In
                                 </motion.button>
-                                
-                                <motion.button 
-                                    onClick={() => navigate('/join')}
+
+                                <motion.button
+                                    // Navigate to the signup page
+                                    onClick={() => navigate('/signup')}
                                     whileHover={buttonHover}
                                 >
                                     Join Now
@@ -124,6 +128,16 @@ const Navbar = ({ currentUser, handleLogout }) => {
                 <li><Link to="/rewards"><IoGift /> Rewards</Link></li>
                 <li><Link to="/gift-cards"><BsFillCreditCard2FrontFill /> Gift Cards</Link></li>
                 <li><Link to="/find-a-store"> <IoStorefrontSharp /> Find a Store</Link></li>
+                 {/* Optionally add mobile login/signup links */}
+                {!currentUser && (
+                    <>
+                        <li><Link to="/login">Sign In</Link></li>
+                        <li><Link to="/signup">Join Now</Link></li>
+                    </>
+                )}
+                 {currentUser && (
+                    <li><div onClick={handleLogout} style={{ padding: '15px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}><AiOutlineLogout style={{ marginRight: '15px'}} /> Logout</div></li>
+                 )}
             </ul>
         </header>
     );
