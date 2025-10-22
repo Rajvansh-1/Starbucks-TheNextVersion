@@ -48,9 +48,12 @@ public/          # Static assets
 
 
 
-## � License
+## 📜 License
 
-MIT
+This project is **proprietary** and **all rights are reserved**.
+
+You may **not copy, modify, distribute, or use** any part of this codebase or its assets without **explicit written permission** from the author.
+
 
 ---
 
